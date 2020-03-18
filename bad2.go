@@ -7,6 +7,7 @@ type Instrument interface {
 	findMore() string
 }
 
+// 委譲せずに構造体を複数定義、新しい楽器が増えた場合に、同じフィールドを再び書くことになる。
 type Guitar struct {
 	manufacturer string
 	price int
@@ -17,6 +18,8 @@ type Drums struct {
 	price int
 }
 
+/*　Instrumentインターフェースを実装するために、Guitar構造体とDrums構造体にそれぞれメソッド
+	を実装している。ここでも新しく楽器が増えた場合は同じようなコードを再び書かなければいけない　*/
 func (g Guitar) sound() string {
 	return "ギター は鳴るよ JUGJUG\n"
 }
